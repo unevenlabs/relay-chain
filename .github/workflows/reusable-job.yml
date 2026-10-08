@@ -39,7 +39,9 @@ jobs:
       - name: Run command
         env:
           SP1_PROVER: "mock"
-        run: ${{ inputs.env-vars }} ${{ inputs.command }}
+          ENV_VARS: ${{ inputs.env-vars }}
+          COMMAND: ${{ inputs.command }}
+        run: $ENV_VARS $COMMAND
 
       - name: Exit if working tree is dirty
         if: ${{ inputs.check-dirty-tree }}
